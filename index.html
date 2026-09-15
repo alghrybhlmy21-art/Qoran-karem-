@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نور القرآن</title>
+<style>
+body{font-family:serif;background:radial-gradient(circle,#0f3d2e,#02120c);color:#fff;margin:0;text-align:center;overflow-x:hidden}
+header{padding:30px 20px}
+header h1{font-size:45px;color:#f9d976;margin:0;animation:glow 2s infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px #f9d976}to{text-shadow:0 0 30px #fff}}
+.heart-box{position:relative;width:220px;height:220px;margin:20px auto;animation:beat 1.5s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.heart{font-size:200px;line-height:1;filter:drop-shadow(0 0 20px #ff4d6d)}
+.heart-img{position:absolute;top:55px;left:50%;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #fff}
+.card{background:rgba(255,255,255,0.95);color:#0f3d2e;margin:20px auto;padding:30px;border-radius:25px;max-width:700px;box-shadow:0 10px 40px rgba(249,217,118,0.4);border:3px solid #f9d976;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.aya{font-size:30px;line-height:2;margin-bottom:15px}
+.sura{font-size:18px;color:#a67c00}
+button{background:linear-gradient(45deg,#f9d976,#ff9a3d);border:none;padding:15px 35px;font-size:22px;border-radius:50px;cursor:pointer;margin:20px;color:#0f3d2e;font-weight:bold;transition:0.3s}
+button:hover{transform:scale(1.1)}
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.star{position:absolute;color:#f9d976;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:1}}
+footer{padding:20px;color:#ccc}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<header>
+<h1>نور القرآن</h1>
+<p>آيات مختارة تريح القلب</p>
+</header>
+
+<div class="heart-box">
+<div class="heart">❤️</div>
+<img class="heart-img" src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=300" alt="نور">
+</div>
+
+<div class="card">
+<div class="aya" id="ayaText">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
+<div class="sura" id="suraText">سورة الرعد - 28</div>
+<button onclick="nextAya()">آية جديدة 🤲</button>
+</div>
+
+<footer>صدقة جارية - نسألكم الدعاء يا مستر حلمي</footer>
+
+<script>
+const ayat=[
+["﴿ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾","سورة الشرح - 5"],
+["﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾","سورة طه - 114"],
+["﴿ وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ ﴾","سورة الحديد - 4"],
+["﴿ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا ﴾","سورة التوبة - 40"],
+["﴿ وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ ﴾","سورة ق - 16"],
+["﴿ رَبِّ اشْرَحْ لِي صَدْرِي ﴾","سورة طه - 25"],
+["﴿ وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا ﴾","سورة الطلاق - 2"]
+];
+let i=0;
+function nextAya(){
+i=(i+1)%ayat.length;
+document.getElementById('ayaText').innerText=ayat[i][0];
+document.getElementById('suraText').innerText=ayat[i][1];
+}
+// نجوم متحركة
+const starsDiv=document.getElementById('stars');
+for(let k=0;k<30;k++){
+let s=document.createElement('div');
+s.className='star';
+s.innerHTML='✨';
+s.style.left=Math.random()*100+'%';
+s.style.top=Math.random()*100+'%';
+s.style.animationDelay=(Math.random()*2)+'s';
+starsDiv.appendChild(s);
+}
+</script>
+</body>
+</html>
